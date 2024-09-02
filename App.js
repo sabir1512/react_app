@@ -1,33 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h2", {}, "I am h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h2", {}, "I am h2 tag"),
-  ]),
-  //React.createElement=> object => htmlElement(render)
-  React.createElement("div", { id: "div1" }, [
-    React.createElement("p", {}, "This is a paragraph1 for sabir ali"),
-    React.createElement("p", {}, "This is a paragraph2"),
-    React.createElement("p", {}, "This is a paragraph3"),
-    React.createElement("p", {}, "This is a paragraph4"),
-    React.createElement("p", {}, "This is a paragraph5"),
-  ]),
-]);
-/*<div id="parent">
-<div id="child">
-<h1>I'm h1 tag</h1>
-<h2>I'm h1 tag</h2>
-</div>
-<div id="child2">
-<h1>I'm h1 tag</h1>
-<h2>I'm h1 tag</h2>
-</div>
-</div>*/
-console.log(parent); //object
+//JSX- jsx is not html in js.it is html-like or XML-like syntax.
+//React.createElement => ReactElement - JS object => htmlElement(render)
+//JSX=>React.createElement=>ReactElement - JS object => htmlElement(render)
+// JSX (transpiled before it reaches the JS Engine) -> parcel -> babel
+//JSX prevents cross site scripting attack.means it sanitize the code of api.
+
+//React Element
+const jsxheading = <h1>Hello React using JSX</h1>;
+console.log(jsxheading); //object
+
+//React Component
+//Class based Component
+//Functional Component - Functional comp. is a function that returns some piece of JSX code.
+//Component Composition - pass one component to another component.
+/* const Title = () => (
+  <h1 className="head" tabindex="5">
+    Namaste React using JSX
+  </h1>
+); */
+
+const title = (
+  <h1 className="head" tabindex="5">
+    Namaste React using JSX
+  </h1>
+);
+const Heading = (Component = () => (
+  <div id="container">
+    {title}
+    <h1 className="heaidng">Namaste React Fucntional Component</h1>
+  </div>
+));
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(<Heading />);
