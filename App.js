@@ -1,12 +1,5 @@
-/* const heading = React.createElement(
-  "h1",
-  { id: "heading", xyz: "abc" },
-  "Hello from React"
-);
-console.log(heading); */
-
-//ReactElement(Object) ⇒ HTML (Browser Understands)
-//This is core react code
+import React from "react";
+import ReactDOM from "react-dom/client";
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
     React.createElement("h1", {}, "I am h1 tag"),
@@ -16,8 +9,9 @@ const parent = React.createElement("div", { id: "parent" }, [
     React.createElement("h1", {}, "I am h1 tag"),
     React.createElement("h2", {}, "I am h2 tag"),
   ]),
+  //React.createElement=> object => htmlElement(render)
   React.createElement("div", { id: "div1" }, [
-    React.createElement("p", {}, "This is a paragraph1"),
+    React.createElement("p", {}, "This is a paragraph1 for sabir ali"),
     React.createElement("p", {}, "This is a paragraph2"),
     React.createElement("p", {}, "This is a paragraph3"),
     React.createElement("p", {}, "This is a paragraph4"),
