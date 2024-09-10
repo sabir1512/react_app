@@ -19,3 +19,18 @@
 - HTTPS
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
+
+# wo types of Export/Import
+
+- Default Export/Import
+  Export default Component;
+  Import Component from “path”
+- Named Export/Import -  
+   Export const Component
+  Import {Component} from “path”
+
+# - React Hooks
+
+- Normal JS utility function
+- useState()
+- useEffect()
