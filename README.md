@@ -36,3 +36,8 @@
 - useEffect()
 
 # /_ https://proxy.cors.sh/ _/
+
+# 2 types of Routing in web apps
+
+1. Client side routing
+2. Server side routing
