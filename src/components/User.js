@@ -7,10 +7,10 @@ const User = ({ name }) => {
     }, 1000); */
     console.log("useEffect");
 
-    return () => {
+    /* return () => {
       clearInterval(timer);
       console.log("useEffect return");
-    };
+    }; */
   }, []);
   console.log("Render");
   return (

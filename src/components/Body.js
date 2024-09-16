@@ -30,12 +30,7 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  //conditional rendering
-  /* if (listOfRestaurants.length === 0) {
-    return <Shimmer />;
-    /* <h1>Loading...</h1> 
-  } */
-  //console.log("Rendered");
+  
   if (onlineStatus === false) {
     return (
       <h1>
@@ -46,16 +41,17 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="border rounded-lg">
+      <div className="flex p-0 m-0 items-center">
+        <div className="search p-4 m-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black rounded-md"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
+          className="px-4 bg-green-200 rounded-md border border-solid"
             onClick={() => {
               const filteredData = listOfRestaurants.filter((item) =>
                 item.info.name
@@ -68,18 +64,11 @@ const Body = () => {
             Search
           </button>
         </div>
+        <div>
         <button
-          className="filter-btn"
+          className="px-4 bg-green-200 rounded-md border border-solid"
           onClick={() => {
-            /* const filteredRestraunts = resList.filter(
-              (res) => res.data.avgRating > 4
-            ); */
-            //console.log(listOfRestaurants);
-            /* setListOfRestaurants(
-              listOfRestaurants.filter((res) => {
-                return res.info.avgRating > 4.5;
-              })
-            ); */
+            
             setFilteredRestraunt(
               listOfRestaurants.filter((res) => {
                 return res.info.avgRating > 4.5;
@@ -87,13 +76,13 @@ const Body = () => {
             );
           }}
         >
-          Top Rated Restraunt
+          Top Rated Retraunt
         </button>
+        </div>
+        
       </div>
-      <div className="res-container">
-        {/* {listOfRestaurants.map((item) => {
-          console.log(item.info);
-        })} */}
+      <div className="flex flex-wrap">
+        
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
