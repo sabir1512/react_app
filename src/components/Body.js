@@ -2,9 +2,10 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-
+  const onlineStatus = useOnlineStatus();
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestraunt] = useState([]);
   useEffect(() => {
@@ -14,7 +15,8 @@ const Body = () => {
     //https://corsproxy.io/? - It is not working.
     //https://proxy.cors.sh/ - it is working properly.
     const data = await fetch(
-      "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.543373&lng=77.297785&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      //https://proxy.cors.sh/
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.543373&lng=77.297785&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     /* console.log(
@@ -34,6 +36,13 @@ const Body = () => {
     /* <h1>Loading...</h1> 
   } */
   //console.log("Rendered");
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Looks like you are offline!! Please check your internet connection.
+      </h1>
+    );
+  }
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
