@@ -41,3 +41,11 @@
 
 1. Client side routing
 2. Server side routing
+
+# All the below terms are same
+- chunking
+- code splitting
+- dynamic bundling
+- lazy loading
+- on demand loading
+- dynamic import

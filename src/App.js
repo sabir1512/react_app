@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import "../index.css"
+import React, { lazy, Suspense, useState, useEffect } from "react";
+import "../index.css";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,22 +8,38 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-
-//chunking
-//code splitting
-//dynamic bundling
-//lazy loading
-//on demand loading
-//dynamic import
+import UserContext from "../utils/UserContext";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
+
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    const data = {
+      name: "Sabir Ali",
+    };
+    setUserName(data.name);
+  }, []);
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    //Default
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      {/* Sabir Ali */}
+      <div>
+        {/* <UserContext.Provider value={{ loggedInUser: "Yusha Ali" }}> */}
+        {/* Yusha Ali */}
+        <Header />
+        {/* </UserContext.Provider> */}
+
+        <Outlet />
+      </div>
+    </UserContext.Provider>
+    /* <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider> */
   );
 };
 const appRouter = createBrowserRouter([
@@ -62,14 +78,6 @@ const appRouter = createBrowserRouter([
     ],
     errorElement: <Error />,
   },
-  /* {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  }, */
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);

@@ -5,14 +5,13 @@ const User = ({ name }) => {
     /* const timer = setInterval(() => {
       console.log("setInterval called");
     }, 1000); */
-    console.log("useEffect");
-
+    //console.log("useEffect");
     /* return () => {
       clearInterval(timer);
       console.log("useEffect return");
     }; */
   }, []);
-  console.log("Render");
+  //console.log("Render");
   return (
     <div className="user-card">
       <h3>{count}</h3>

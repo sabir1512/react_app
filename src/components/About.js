@@ -17,7 +17,7 @@ class About extends Component {
       <div>
         <h1>About Us page</h1>
         <User name="ali (function)" />
-        {/* <UserClass name="First (class)" email={"first@gmail.com(class)"} /> */}
+        <UserClass name="First (class)" email={"first@gmail.com(class)"} />
         {/* <UserClass name="Second (class)" email={"second@gmail.com(class)"} /> */}
       </div>
     );
